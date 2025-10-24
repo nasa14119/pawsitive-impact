@@ -7,9 +7,16 @@
   font-weight: 100 900;
 }
 @theme {
+  --background: "#F2F2F2";
+  --text: hsl(0, 0, 10);
   --font-main: Arimo, sans-serif;
+  --color-primary: #c85c13;
+  --color-brand: #fdba32;
+  --color-accent: #f74b4b;
 }
 body {
   font-weight: 400;
   font-family: var(--font-main);
+  background: var(--background);
+  color: var(--text);
 }
