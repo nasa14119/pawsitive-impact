@@ -1,0 +1,78 @@
+:root {
+  --duration: 300ms;
+}
+@keyframes fade-in-right {
+  from {
+    scale: 0.7;
+    transform: translateX(150%);
+  }
+  to {
+    scale: 1;
+    transform: translateX(0);
+  }
+}
+.fade-right {
+  transform: translateX(150%);
+  animation: forwards var(--duration) ease-out fade-in-right;
+}
+@keyframes fade-in-left {
+  from {
+    scale: 0.7;
+    transform: translateX(-150%);
+  }
+  to {
+    scale: 1;
+    transform: translateX(0);
+  }
+}
+.fade-left {
+  transform: translateX(-150%);
+  animation: forwards var(--duration) ease-out fade-in-left;
+}
+@keyframes fade-out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    scale: 0.7;
+    transform: translateX(150%);
+  }
+}
+.out-left {
+  animation: forwards var(--duration) ease-out fade-out-left;
+}
+@keyframes fade-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    scale: 0.7;
+    transform: translateX(-150%);
+  }
+}
+.out-right {
+  animation: forwards var(--duration) ease-out fade-out-right;
+}
+.fade-left,
+.out-left {
+  transform-origin: bottom left;
+}
+.fade-right,
+.out-right {
+  transform-origin: bottom right;
+}
+/* .fade-left,
+.fade-right {
+  animation-delay: 200ms;
+}
+.out-left,
+.out-right {
+  animation-delay: 100ms;
+}
+ */
+/* .fade-left,
+.fade-right,
+.out-left,
+.out-right {
+}
+  */

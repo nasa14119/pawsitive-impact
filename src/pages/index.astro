@@ -11,8 +11,11 @@ import { GalleryHome } from "@components/GalleryHome";
 
     <title>Pawsitive Impact</title>
   </head>
-  <body>
-    <h1>Astro</h1>
-    <GalleryHome client:idle />
+  <body class="overflow-x-hidden">
+    <div
+      class="h-dvh w-dvw flex flex-col justify-center items-center sm:hidden"
+    >
+      <GalleryHome client:idle />
+    </div>
   </body>
 </html>
