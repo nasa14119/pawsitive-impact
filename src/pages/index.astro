@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { GalleryHome } from "@components/GalleryHome";
 import Nav from "@components/Nav.astro";
+import Tittle from "@components/Tittle.astro";
 ---
 
 <html lang="en">
@@ -15,9 +16,12 @@ import Nav from "@components/Nav.astro";
   <body class="overflow-x-hidden">
     <Nav />
     <div
-      class="h-dvh w-dvw flex flex-col justify-center items-center sm:hidden"
+      class="h-dvh w-dvw grid flex-col justify-center items-center sm:hidden grid-rows-[12dvh_12dvh_1fr] grid-cols-1"
     >
-      <GalleryHome client:idle />
+      <Tittle className="uppercase row-start-2"
+        ><Fragment slot="body">pawsitive impact</Fragment></Tittle
+      >
+      <GalleryHome client:idle className="row-start-3" />
     </div>
   </body>
 </html>

@@ -7,7 +7,8 @@ import type {
 } from "@components/GalleryHome/types";
 import data from "./data.json";
 import { usePreloader } from "@components/GalleryHome/hooks/usePreloader";
-export function GalleryHome() {
+import { tw } from "src/utils";
+export function GalleryHome({ className }: { className?: string }) {
   usePreloader();
   const container = useRef<HTMLDivElement>(null);
   const [direction, setDirecction] = useState<StateDirections>("idle");
@@ -33,7 +34,10 @@ export function GalleryHome() {
   return (
     <section
       ref={container}
-      className="relative h-3/4 w-full overflow-x-hidden select-none"
+      className={tw(
+        className,
+        "relative h-full w-full overflow-x-hidden select-none *:max-h-[70dvh]"
+      )}
     >
       <Card content={current} direction={direction} />
       {prev && <Card content={prev} isHide direction={direction} />}
