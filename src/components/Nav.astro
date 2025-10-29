@@ -1,8 +1,9 @@
 ---
 import DogIcon from "@assets/DogIcon.svg";
+import Tittle from "@components/Tittle.astro";
 const LINKS = [
   {
-    text: "Incio",
+    text: "Inicio",
     url: "#",
   },
   {
@@ -66,17 +67,32 @@ const LINKS = [
   }
 </style>
 <nav
-  class="h-fit py-5 flex gap-x-2 justify-start items-center px-8 fixed top-0 inset-x-0 z-50"
+  class="h-fit py-5 flex justify-start items-center px-8 fixed lg:grid top-0 inset-x-0 z-50 md:text-sm grid-cols-2 grid-rows-1"
 >
-  <div class="background absolute inset-0 -z-50"></div>
-  <DogIcon class="size-12 opacity-0 *:stroke-[#f79041]" />
-  {
-    LINKS.map(({ text, url }) => {
-      return (
-        <a href={url} class="font-medium text-primary-900 opacity-0">
-          {text}
-        </a>
-      );
-    })
-  }
+  <div class="background absolute inset-0 -z-50 lg:hidden"></div>
+  <DogIcon class="size-12 opacity-0 *:stroke-[#f79041] lg:hidden" />
+  <ul
+    class="flex gap-x-2 md:gap-x-5 pl-2 items-center h-full row-[1/_-1] col-[1/1]"
+  >
+    {
+      LINKS.map(({ text, url }) => {
+        return (
+          <li class="hover:opacity-50 transition-opacity duration-300 ease-out">
+            <a
+              href={url}
+              class="font-medium text-primary-900 opacity-0  md:uppercase lg:border-b-2 lg:border-primary"
+            >
+              {text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <a href="#" class="hidden lg:block row-[1/_-1] col-[1/_-1]">
+    <Tittle className="*:uppercase text-center hidden lg:flex -z-50">
+      <DogIcon class="size-11 inline-block *:stroke-primary-900" />
+      <Fragment slot="body">pawsitive impact</Fragment>
+    </Tittle>
+  </a>
 </nav>
