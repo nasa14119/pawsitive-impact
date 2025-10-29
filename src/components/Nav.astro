@@ -1,0 +1,82 @@
+---
+import DogIcon from "@assets/DogIcon.svg";
+const LINKS = [
+  {
+    text: "Incio",
+    url: "#",
+  },
+  {
+    text: "Galeria",
+    url: "#",
+  },
+  {
+    text: "Acerca de",
+    url: "#",
+  },
+];
+---
+
+<style>
+  @keyframes fade-in {
+    from {
+      transform: translate(-5px, 2px);
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translate(0px);
+    }
+  }
+  @keyframes link-animation {
+    from {
+      transform: translateX(-10px);
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+  svg {
+    animation-delay: 100ms;
+    animation: fade-in 500ms ease-out forwards;
+  }
+  a {
+    animation: link-animation 750ms ease-out forwards;
+  }
+  @keyframes nav-background {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  nav .background {
+    background: hsl(0 0 100);
+    animation: forwards ease-out nav-background 1ms;
+    animation-timeline: scroll(block);
+    animation-range: entry 0% cover 30vh;
+  }
+</style>
+<nav
+  class="h-fit py-5 flex gap-x-2 justify-start items-center px-8 fixed top-0 inset-x-0 z-50"
+>
+  <div class="background absolute inset-0 -z-50"></div>
+  <DogIcon class="size-12 opacity-0 *:stroke-[#f79041]" />
+  {
+    LINKS.map(({ text, url }) => {
+      return (
+        <a href={url} class="font-medium text-primary-900 opacity-0">
+          {text}
+        </a>
+      );
+    })
+  }
+</nav>
