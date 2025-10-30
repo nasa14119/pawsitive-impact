@@ -27,7 +27,7 @@ export function Card({ direction, isHide = false, content }: Props) {
           <h2 className="text-center">{content.title}</h2>
         </div>
         <p className="p-5 text-center text-xs ">{content.description}</p>
-        <GalleryBtn date={content.fecha} />
+        <GalleryBtn date={content.fecha} className="mb-2" />
       </div>
     </div>
   );
