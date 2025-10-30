@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { GalleryHome } from "@components/GalleryHome";
+import { HeroDesktop } from "@components/HeroDesktop";
 import Nav from "@components/Nav.astro";
 import Tittle from "@components/Tittle.astro";
 ---
@@ -21,7 +22,10 @@ import Tittle from "@components/Tittle.astro";
       <Tittle className="uppercase row-start-2"
         ><Fragment slot="body">pawsitive impact</Fragment></Tittle
       >
-      <GalleryHome client:idle className="row-start-3" />
+      <GalleryHome client:visible className="row-start-3" />
+    </div>
+    <div class="h-dvh hidden sm:block pt-[12dvh]">
+      <HeroDesktop client:visible />
     </div>
   </body>
 </html>
