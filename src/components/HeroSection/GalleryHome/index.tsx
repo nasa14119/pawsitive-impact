@@ -1,12 +1,12 @@
-import { Card } from "@components/GalleryHome/components/Card";
-import { useControls } from "@components/GalleryHome/hooks/useControls";
+import { Card } from "./components/Card";
+import { useControls } from "@components/HeroSection/GalleryHome/hooks/useControls";
 import { useRef, useState } from "react";
 import type {
   ContentItem,
   StateDirections,
-} from "@components/GalleryHome/types";
+} from "@components/HeroSection/types";
 import data from "./data.json";
-import { usePreloader } from "@components/GalleryHome/hooks/usePreloader";
+import { usePreloader } from "@components/HeroSection/hooks/usePreloader";
 import { tw } from "src/utils";
 export function GalleryHome({ className }: { className?: string }) {
   usePreloader();

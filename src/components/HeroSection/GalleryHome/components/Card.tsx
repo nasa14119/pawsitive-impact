@@ -1,9 +1,9 @@
 import type {
   ContentItem,
   StateDirections,
-} from "@components/GalleryHome/types";
+} from "@components/HeroSection/types";
 import styles from "../animations.module.css";
-import { GalleryBtn } from "@components/GalleryHome/components/GalleryBtn";
+import { GalleryBtn } from "@components/HeroSection/components/GalleryBtn";
 type Props = {
   direction: StateDirections;
   content: ContentItem;

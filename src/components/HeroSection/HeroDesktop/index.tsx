@@ -1,5 +1,5 @@
-import { usePreloader } from "@components/GalleryHome/hooks/usePreloader";
-import { ImageDisplay } from "@components/HeroDesktop/ImageDisplay";
+import { usePreloader } from "@components/HeroSection/hooks/usePreloader";
+import { ImageDisplay } from "@components/HeroSection/HeroDesktop/ImageDisplay";
 const IMGS = [
   {
     src: "https://fastly.picsum.photos/id/319/1000/1200.webp?hmac=AhzQW7COlSft7sylIh1T_2JrwNTOgSmLG_kMML5khTE",

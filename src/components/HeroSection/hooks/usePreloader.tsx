@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import data from "../data.json";
+import data from "../GalleryHome/data.json";
 export const usePreloader = () => {
   useEffect(() => {
     const images = data.map((iteration) => {

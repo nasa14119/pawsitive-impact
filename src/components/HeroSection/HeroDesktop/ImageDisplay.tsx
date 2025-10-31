@@ -1,4 +1,4 @@
-import { GalleryBtn } from "@components/GalleryHome/components/GalleryBtn";
+import { GalleryBtn } from "@components/HeroSection/components/GalleryBtn";
 import styles from "./styles.module.css";
 type Img = { src: string };
 type ImagesProps = Img[];
