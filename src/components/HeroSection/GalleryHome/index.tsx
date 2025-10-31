@@ -8,6 +8,7 @@ import type {
 import { usePreloader } from "@components/HeroSection/hooks/usePreloader";
 import { tw } from "src/utils";
 import { useData } from "@components/HeroSection/hooks/useData";
+import { usePhoneOnly } from "@components/HeroSection/hooks/usePhoneOnly";
 export function GalleryHome({ className }: { className?: string }) {
   usePreloader();
   const data = useData();
@@ -15,7 +16,7 @@ export function GalleryHome({ className }: { className?: string }) {
   const [direction, setDirecction] = useState<StateDirections>("idle");
   const [prev, setPrev] = useState<ContentItem | null>(null);
   const [current, setCurrent] = useState<ContentItem>(data[3]);
-  const [i] = useControls({
+  useControls({
     ref: container,
     next: (index) => {
       setDirecction("right");
@@ -31,6 +32,12 @@ export function GalleryHome({ className }: { className?: string }) {
         return data[index];
       });
     },
+  });
+  usePhoneOnly((isDesktop: boolean) => {
+    if (isDesktop) {
+      setDirecction("idle");
+      setPrev(null);
+    }
   });
   return (
     <section
