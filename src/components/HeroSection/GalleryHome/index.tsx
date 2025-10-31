@@ -5,11 +5,12 @@ import type {
   ContentItem,
   StateDirections,
 } from "@components/HeroSection/types";
-import data from "./data.json";
 import { usePreloader } from "@components/HeroSection/hooks/usePreloader";
 import { tw } from "src/utils";
+import { useData } from "@components/HeroSection/hooks/useData";
 export function GalleryHome({ className }: { className?: string }) {
   usePreloader();
+  const data = useData();
   const container = useRef<HTMLDivElement>(null);
   const [direction, setDirecction] = useState<StateDirections>("idle");
   const [prev, setPrev] = useState<ContentItem | null>(null);

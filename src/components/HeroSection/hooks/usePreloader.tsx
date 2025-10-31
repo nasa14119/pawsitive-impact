@@ -1,6 +1,7 @@
+import { useData } from "@components/HeroSection/hooks/useData";
 import { useEffect } from "react";
-import data from "../GalleryHome/data.json";
 export const usePreloader = () => {
+  const data = useData();
   useEffect(() => {
     const images = data.map((iteration) => {
       return new Promise((res) => {

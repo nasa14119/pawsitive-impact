@@ -6,7 +6,6 @@ import {
   type RefObject,
   type SetStateAction,
 } from "react";
-import data from "../data.json";
 type Props = {
   ref: RefObject<HTMLDivElement | null>;
   max?: number;
@@ -14,7 +13,7 @@ type Props = {
   next?: (i: number) => void;
 };
 const DEFAULT_START = 3;
-const MAX = data.length - 1;
+const MAX = 6;
 export const useControls = ({
   ref,
   prev,
