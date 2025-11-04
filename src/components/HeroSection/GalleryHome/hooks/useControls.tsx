@@ -1,3 +1,4 @@
+import { useIndexStore } from "@components/HeroSection/store";
 import {
   useEffect,
   useRef,
@@ -12,29 +13,18 @@ type Props = {
   prev?: (i: number) => void;
   next?: (i: number) => void;
 };
-const DEFAULT_START = 3;
-const MAX = 6;
-export const useControls = ({
-  ref,
-  prev,
-  next,
-  max = MAX,
-}: Props): [number, Dispatch<SetStateAction<number>>] => {
-  const [state, setState] = useState<number>(DEFAULT_START);
+export const useControls = ({ ref, prev, next }: Props): void => {
+  const { next: nextStore, prev: prevStore, index, max } = useIndexStore();
   const val = useRef({ x: 0, y: 0 });
   const isClick = useRef(false);
   const handlePrev = () => {
-    setState((curr) => {
-      const new_val = curr != 0 ? curr - 1 : 0;
-      prev && prev(new_val);
-      return new_val;
+    prevStore((prevVal) => {
+      prev && prev(prevVal);
     });
   };
   const handleNext = () => {
-    setState((prev) => {
-      const new_val = prev != max ? prev + 1 : max;
-      next && next(new_val);
-      return new_val;
+    nextStore((prevVal) => {
+      next && next(prevVal);
     });
   };
   useEffect(() => {
@@ -102,5 +92,4 @@ export const useControls = ({
       ref?.current?.removeEventListener("mouseup", handleEndMouse);
     };
   }, []);
-  return [state, setState];
 };

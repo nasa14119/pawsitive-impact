@@ -11,6 +11,7 @@ type Props = {
 };
 export function Card({ direction, isHide = false, content }: Props) {
   const state = !isHide ? "fade-" + direction : "out-" + direction;
+  const src = Array.isArray(content.src) ? content.src[0] : content.src;
   return (
     <div
       key={content.title}
@@ -19,7 +20,7 @@ export function Card({ direction, isHide = false, content }: Props) {
       <img
         className="bg-neutral-950/20 row-[1_/-1] col-[1/1] object-cover size-full rounded-2xl [user-drag:none] select-none"
         draggable="false"
-        src={content.src}
+        src={src}
         alt=""
       />
       <div className="flex flex-col col-[1/1] row-[2/2] rounded-b-2xl backdrop-blur-xs pt-4 bg-linear-to-t from-neutral-900 to-transparent text-white mask-t-from-90%">

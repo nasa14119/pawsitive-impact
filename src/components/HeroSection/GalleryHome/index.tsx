@@ -9,27 +9,32 @@ import { usePreloader } from "@components/HeroSection/hooks/usePreloader";
 import { tw } from "src/utils";
 import { useData } from "@components/HeroSection/hooks/useData";
 import { usePhoneOnly } from "@components/HeroSection/hooks/usePhoneOnly";
+import { useIndexStore } from "@components/HeroSection/store";
 export function GalleryHome({ className }: { className?: string }) {
   usePreloader();
+  const { index } = useIndexStore();
+  console.log(index);
   const data = useData();
   const container = useRef<HTMLDivElement>(null);
   const [direction, setDirecction] = useState<StateDirections>("idle");
   const [prev, setPrev] = useState<ContentItem | null>(null);
-  const [current, setCurrent] = useState<ContentItem>(data[3]);
+  const [current, setCurrent] = useState<ContentItem>(data[index]);
   useControls({
     ref: container,
-    next: (index) => {
+    next: (prev_index) => {
       setDirecction("right");
       setCurrent((curr) => {
-        setPrev(index === data.length - 1 ? data[data.length - 2] : curr);
-        return data[index];
+        setPrev(
+          prev_index + 1 === data.length - 1 ? data[data.length - 2] : curr
+        );
+        return data[prev_index + 1];
       });
     },
-    prev: (index) => {
+    prev: (prev_index) => {
       setDirecction("left");
       setCurrent((curr) => {
-        setPrev(index === 0 ? data[1] : curr);
-        return data[index];
+        setPrev(prev_index - 1 === 0 ? data[1] : curr);
+        return data[prev_index - 1];
       });
     },
   });
@@ -37,6 +42,7 @@ export function GalleryHome({ className }: { className?: string }) {
     if (isDesktop) {
       setDirecction("idle");
       setPrev(null);
+      setCurrent(data[index]);
     }
   });
   return (
