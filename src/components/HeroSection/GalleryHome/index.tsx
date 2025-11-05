@@ -13,7 +13,6 @@ import { useIndexStore } from "@components/HeroSection/store";
 export function GalleryHome({ className }: { className?: string }) {
   usePreloader();
   const { index } = useIndexStore();
-  console.log(index);
   const data = useData();
   const container = useRef<HTMLDivElement>(null);
   const [direction, setDirecction] = useState<StateDirections>("idle");
