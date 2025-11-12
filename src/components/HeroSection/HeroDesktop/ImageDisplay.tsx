@@ -1,8 +1,6 @@
 import { GalleryBtn } from "@components/HeroSection/components/GalleryBtn";
 import styles from "./styles.module.css";
-type Img = { src: string };
-type Imgs = { src: string[] };
-type Props = { imgs: Img | Imgs; date?: string };
+import { useCurrent } from "@components/HeroSection/hooks/useCurrent";
 function ImgGallery({ src }: { src: string[] }) {
   return (
     <article className="size-full relative grid place-content-center md:max-w-[500px] mx-auto">
@@ -36,17 +34,20 @@ function ImgMain({ content }: { content: string }) {
     </article>
   );
 }
-export function ImageDisplay({ date, imgs }: Props) {
-  if (!date && !imgs) return null;
+export function ImageDisplay() {
+  const [imgs] = useCurrent();
   return (
-    <main className="size-full relative grid grid-rows-[1fr_10%] gap-y-2">
+    <main
+      className="size-full relative grid grid-rows-[1fr_10%] gap-y-2"
+      key={imgs.title}
+    >
       {Array.isArray(imgs.src) ? (
         <ImgGallery src={imgs.src} />
       ) : (
         <ImgMain content={imgs.src} />
       )}
       <div className="size-full grid place-content-center">
-        <GalleryBtn date={date} className="mb-0" />
+        <GalleryBtn date={imgs.fecha} className="mb-0" />
       </div>
     </main>
   );

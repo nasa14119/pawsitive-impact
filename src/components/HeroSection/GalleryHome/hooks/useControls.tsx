@@ -1,31 +1,22 @@
-import { useIndexStore } from "@components/HeroSection/store";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type Dispatch,
-  type RefObject,
-  type SetStateAction,
-} from "react";
+import { useControlsFn } from "@components/HeroSection/hooks/useControlsFn";
+import { useEffect, useRef, type RefObject } from "react";
 type Props = {
   ref: RefObject<HTMLDivElement | null>;
   max?: number;
-  prev?: (i: number) => void;
-  next?: (i: number) => void;
+  prev?: () => void;
+  next?: () => void;
 };
 export const useControls = ({ ref, prev, next }: Props): void => {
-  const { next: nextStore, prev: prevStore, index, max } = useIndexStore();
+  const { next: nextStore, prev: prevStore } = useControlsFn();
   const val = useRef({ x: 0, y: 0 });
   const isClick = useRef(false);
   const handlePrev = () => {
-    prevStore((prevVal) => {
-      prev && prev(prevVal);
-    });
+    prevStore();
+    prev && prev();
   };
   const handleNext = () => {
-    nextStore((prevVal) => {
-      next && next(prevVal);
-    });
+    nextStore();
+    next && next();
   };
   useEffect(() => {
     if (!ref?.current) return;
@@ -91,5 +82,5 @@ export const useControls = ({ ref, prev, next }: Props): void => {
       ref?.current?.removeEventListener("mousemove", handleMove);
       ref?.current?.removeEventListener("mouseup", handleEndMouse);
     };
-  }, []);
+  }, [prevStore, nextStore]);
 };

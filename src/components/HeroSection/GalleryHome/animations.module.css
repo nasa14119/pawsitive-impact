@@ -1,6 +1,17 @@
 :root {
   --duration: 300ms;
 }
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade {
+  animation: 200ms ease forwards fade;
+}
 @keyframes fade-in-right {
   from {
     scale: 0.7;
@@ -74,5 +85,4 @@
 .fade-right,
 .out-left,
 .out-right {
-}
-  */
+} */

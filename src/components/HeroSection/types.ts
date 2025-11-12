@@ -10,10 +10,9 @@ export interface Content {
   data: ContentItem[];
   max: number;
 }
-type HandleChange = (prev: number) => void;
-export interface Store {
-  index: number;
-  max: number;
-  next: (onChange?: HandleChange) => void;
-  prev: (onChange?: HandleChange) => void;
+export interface DataStore {
+  current_index: number;
+  data: ContentItem[];
+  setData: (data: Partial<DataStore>) => void;
+  setIndex: (new_index: number) => void;
 }

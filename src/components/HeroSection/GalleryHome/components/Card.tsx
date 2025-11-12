@@ -10,12 +10,17 @@ type Props = {
   isHide?: boolean;
 };
 export function Card({ direction, isHide = false, content }: Props) {
-  const state = !isHide ? "fade-" + direction : "out-" + direction;
+  const state =
+    direction === "idle"
+      ? "fade"
+      : !isHide
+      ? "fade-" + direction
+      : "out-" + direction;
   const src = Array.isArray(content.src) ? content.src[0] : content.src;
   return (
     <div
       key={content.title}
-      className={`absolute inset-y-0 grid grid-rows-[1fr_auto] grid-cols-[1fr] ${styles[state]} px-5 `}
+      className={`absolute inset-y-0 grid grid-rows-[1fr_auto] grid-cols-[1fr] ${styles[state]} px-5`}
     >
       <img
         className="bg-neutral-950/20 row-[1_/-1] col-[1/1] object-cover size-full rounded-2xl [user-drag:none] select-none"
