@@ -32,7 +32,7 @@ export const useControls = ({ ref, prev, next }: Props): void => {
       if (isClick.current) return;
       const endX = e.changedTouches[0].clientX;
       const endY = Math.abs(e.changedTouches[0].clientY - val.current.y);
-      if (endY >= 10) {
+      if (endY >= 20) {
         val.current = { x: 0, y: 0 };
         return;
       }
