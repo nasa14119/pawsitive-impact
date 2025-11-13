@@ -1,42 +1,22 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  type Dispatch,
-  type RefObject,
-  type SetStateAction,
-} from "react";
-import data from "../data.json";
+import { useControlsFn } from "@components/HeroSection/hooks/useControlsFn";
+import { useEffect, useRef, type RefObject } from "react";
 type Props = {
   ref: RefObject<HTMLDivElement | null>;
   max?: number;
-  prev?: (i: number) => void;
-  next?: (i: number) => void;
+  prev?: () => void;
+  next?: () => void;
 };
-const DEFAULT_START = 3;
-const MAX = data.length - 1;
-export const useControls = ({
-  ref,
-  prev,
-  next,
-  max = MAX,
-}: Props): [number, Dispatch<SetStateAction<number>>] => {
-  const [state, setState] = useState<number>(DEFAULT_START);
+export const useControls = ({ ref, prev, next }: Props): void => {
+  const { next: nextStore, prev: prevStore } = useControlsFn();
   const val = useRef({ x: 0, y: 0 });
   const isClick = useRef(false);
   const handlePrev = () => {
-    setState((curr) => {
-      const new_val = curr != 0 ? curr - 1 : 0;
-      prev && prev(new_val);
-      return new_val;
-    });
+    prevStore();
+    prev && prev();
   };
   const handleNext = () => {
-    setState((prev) => {
-      const new_val = prev != max ? prev + 1 : max;
-      next && next(new_val);
-      return new_val;
-    });
+    nextStore();
+    next && next();
   };
   useEffect(() => {
     if (!ref?.current) return;
@@ -52,7 +32,7 @@ export const useControls = ({
       if (isClick.current) return;
       const endX = e.changedTouches[0].clientX;
       const endY = Math.abs(e.changedTouches[0].clientY - val.current.y);
-      if (endY >= 10) {
+      if (endY >= 20) {
         val.current = { x: 0, y: 0 };
         return;
       }
@@ -102,6 +82,5 @@ export const useControls = ({
       ref?.current?.removeEventListener("mousemove", handleMove);
       ref?.current?.removeEventListener("mouseup", handleEndMouse);
     };
-  }, []);
-  return [state, setState];
+  }, [prevStore, nextStore]);
 };

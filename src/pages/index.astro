@@ -1,11 +1,12 @@
 ---
 import "../styles/global.css";
-import { GalleryHome } from "@components/GalleryHome";
+import { GalleryHome, HeroDesktop } from "@components/HeroSection";
 import Nav from "@components/Nav.astro";
+import Tittle from "@components/Tittle.astro";
 import Meta from "@components/Meta.astro";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -16,9 +17,15 @@ import Meta from "@components/Meta.astro";
   <body class="overflow-x-hidden">
     <Nav />
     <div
-      class="h-dvh w-dvw flex flex-col justify-center items-center sm:hidden"
+      class="h-dvh w-dvw grid flex-col justify-center items-center sm:hidden grid-rows-[12dvh_12dvh_1fr] grid-cols-1"
     >
-      <GalleryHome client:idle />
+      <Tittle className="uppercase row-start-2"
+        ><Fragment slot="body">pawsitive impact</Fragment></Tittle
+      >
+      <GalleryHome client:idle className="row-start-3" />
+    </div>
+    <div class="h-dvh hidden sm:block pt-[12dvh]">
+      <HeroDesktop client:idle />
     </div>
   </body>
 </html>

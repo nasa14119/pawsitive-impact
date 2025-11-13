@@ -17,25 +17,29 @@
   {
     "title": 4,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta odio totam laudantium unde blanditiis porro corrupti nostrum, eveniet assumenda quam?",
-    "fecha": "10/10/2025",
-    "src": "https://fastly.picsum.photos/id/564/1000/1200.webp?hmac=i4qO8kO06OXNsrGZHERgg-Pb26c6FYV5mAuF8be4mTQ"
+    "fecha": "1/12/25",
+    "src": [
+      "https://fastly.picsum.photos/id/564/1000/1200.webp?hmac=i4qO8kO06OXNsrGZHERgg-Pb26c6FYV5mAuF8be4mTQ",
+      "https://fastly.picsum.photos/id/564/1000/1200.webp?hmac=i4qO8kO06OXNsrGZHERgg-Pb26c6FYV5mAuF8be4mTQ",
+      "https://fastly.picsum.photos/id/564/1000/1200.webp?hmac=i4qO8kO06OXNsrGZHERgg-Pb26c6FYV5mAuF8be4mTQ"
+    ]
   },
   {
     "title": 5,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta odio totam laudantium unde blanditiis porro corrupti nostrum, eveniet assumenda quam?",
-    "fecha": "10/10/2025",
+    "fecha": "1/11/25",
     "src": "https://fastly.picsum.photos/id/526/1000/1200.webp?hmac=2QpL2_eHoWLQmKrppczRBSOfgbURKndALhUGYP2IQGo"
   },
   {
     "title": 6,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta odio totam laudantium unde blanditiis porro corrupti nostrum, eveniet assumenda quam?",
-    "fecha": "10/10/2025",
+    "fecha": "20/2/26",
     "src": "https://fastly.picsum.photos/id/66/1000/1200.webp?hmac=5dUgaImQlscm21biaQdX1TpG1w_-evpTyAzk1CngZ-Y"
   },
   {
     "title": 7,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta odio totam laudantium unde blanditiis porro corrupti nostrum, eveniet assumenda quam?",
-    "fecha": "31/12/2025",
+    "fecha": "31/4/26",
     "src": "https://fastly.picsum.photos/id/384/1000/1200.webp?hmac=EV7fmcgsFwR7hp4S8yE7aB_zuvvOn6icwVm8K1Ci_44"
   }
 ]
